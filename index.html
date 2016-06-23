@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Reiknaðu tollinn</title>
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Reiknaðu tollinn!</h1>
+        <p class="lead">
+            Ekki láta taka þig.
+        </p>
+    </div>
+    <div class="main">
+        <div class="people">
+            <div class="person1">
+                <div class="row">
+                    <form>
+                        <div class="form-group col-md-4">
+                            <label>Lítrar af sterku ( 22% til 55% ) :</label>
+                            <input type="number"
+                                   class="form-control spirit"
+                                   value="0"
+                                   min="0"
+                            >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Lítrar af léttvíni ( undir 22% ) :</label>
+                            <input type="number"
+                                   class="form-control wine"
+                                   value="0"
+                                   min="0"
+                            >
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Lítrar af bjór:</label>
+                            <input type="number"
+                                   class="form-control beer"
+                                   value="0"
+                                   min="0"
+                            >
+                        </div>
+                    </form>
+                </div>
+                <div class="message">
+                    <div class="leid1">
+                        <p class="bg-info alert">
+                        </p>
+                    </div>
+                    <div class="leid2">
+                        <p class="bg-info alert">
+                        </p>
+                    </div>
+                    <div class="leid3">
+                        <p class="bg-info alert">
+                        </p>
+                    </div>
+                    <div class="leid4">
+                        <p class="bg-info alert">
+                        </p>
+                    </div>
+                    <div class="leid5">
+                        <p class="bg-info alert">
+                        </p>
+                    </div>
+                    <div class="noway">
+                        <p class="bg-warning alert">
+                            Þessi kaup eru ekki tollfrjáls.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p>
+            <button type="button" class="btn" onclick="addPerson()">
+                Bæta við fullorðnum
+            </button>
+            <button type="button" class="btn" onclick="removePerson()">
+                Fjarlægja fullorðinn
+            </button>
+        </p>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2016 Eiríkur Ernir Þorsteinsson.
+            <strong>Birt án ábyrgðar</strong> og án tengsla við Tollstjóra.
+            Nákvæmar upplýsingar má finna á <a
+                    href="http://www.dutyfree.is/um-frihofnina/tollkvoti/">síðu
+                Fríhafnarinnar
+            </a> og <a
+                    href="https://www.tollur.is/einstaklingar/tollamal/ferdamenn/">síðu
+                Tollstjóra</a>. </p>
+    </footer>
+
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
