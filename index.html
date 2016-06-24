@@ -8,7 +8,8 @@
     <title>Reiknaðu tollinn</title>
 
     <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet">
     <link href="css/jumbotron-narrow.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -31,73 +32,46 @@
         </p>
     </div>
     <div class="main">
-        <div class="people">
-            <div class="person1">
-                <div class="row">
-                    <form>
-                        <div class="form-group col-md-4">
-                            <label>Lítrar af sterku ( 22% til 55% ) :</label>
-                            <input type="number"
-                                   class="form-control spirit"
-                                   value="0"
-                                   min="0"
-                            >
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Lítrar af léttvíni ( undir 22% ) :</label>
-                            <input type="number"
-                                   class="form-control wine"
-                                   value="0"
-                                   min="0"
-                            >
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Lítrar af bjór:</label>
-                            <input type="number"
-                                   class="form-control beer"
-                                   value="0"
-                                   min="0"
-                            >
-                        </div>
-                    </form>
+        <div class="row">
+            <form>
+                <div class="form-group col-md-4">
+                    <label>Fjöldi fólks:</label>
+                    <input type="number"
+                           id="num-people"
+                           class="form-control"
+                           value="1"
+                           min="0"
+                    >
                 </div>
-                <div class="message">
-                    <div class="leid1">
-                        <p class="bg-info alert">
-                        </p>
-                    </div>
-                    <div class="leid2">
-                        <p class="bg-info alert">
-                        </p>
-                    </div>
-                    <div class="leid3">
-                        <p class="bg-info alert">
-                        </p>
-                    </div>
-                    <div class="leid4">
-                        <p class="bg-info alert">
-                        </p>
-                    </div>
-                    <div class="leid5">
-                        <p class="bg-info alert">
-                        </p>
-                    </div>
-                    <div class="noway">
-                        <p class="bg-warning alert">
-                            Þessi kaup eru ekki tollfrjáls.
-                        </p>
-                    </div>
+                <div class="form-group col-md-4">
+                    <label>Lítrar af sterku ( 22% til 55% ) :</label>
+                    <input type="number"
+                           id="beer-amount"
+                           class="form-control"
+                           value="0"
+                           min="0"
+                    >
                 </div>
-            </div>
+                <div class="form-group col-md-4">
+                    <label>Lítrar af léttvíni ( undir 22% ) :</label>
+                    <input type="number"
+                           id="wine-amount"
+                           class="form-control"
+                           value="0"
+                           min="0"
+                    >
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Lítrar af bjór:</label>
+                    <input type="number"
+                           id="spirit-amount"
+                           class="form-control"
+                           value="0"
+                           min="0"
+                    >
+                </div>
+            </form>
         </div>
-        <p>
-            <button type="button" class="btn" onclick="addPerson()">
-                Bæta við fullorðnum
-            </button>
-            <button type="button" class="btn" onclick="removePerson()">
-                Fjarlægja fullorðinn
-            </button>
-        </p>
     </div>
 
     <footer class="footer">
