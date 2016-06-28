@@ -1,12 +1,27 @@
 "use strict";
 
-function litresToUnits(spiritAmount, wineAmount, beerAmount) {
+function updateMessages(units, unitsAvailable, unitsRemaining) {
+    for (var prop in units) {
+        if (units.hasOwnProperty(prop)) {
+            $("." + prop + "-units").text(units[prop]);
+        }
+    }
+    $(".units-available").text(unitsAvailable);
+    $(".units-remaining").text(unitsRemaining);
+
+    var $message = $(".alert");
+    if (unitsRemaining < 0) {
+        $message.removeClass("alert-success");
+        $message.addClass("alert-warning");
+    } else {
+        $message.removeClass("alert-warning");
+        $message.addClass("alert-success");
+    }
+}
+
+function litresToUnits(amounts) {
     /*
      Converts given amounts of alcohol to "units" defined by Icelandic customs.
-
-     spiritAmount: litres of hard liquor
-     wineAmount: litres of wine
-     beerAmount: litres of beer
      */
 
     // Units defined by https://www.tollur.is/einstaklingar/tollamal/ferdamenn/
@@ -14,42 +29,54 @@ function litresToUnits(spiritAmount, wineAmount, beerAmount) {
     var wineUnit = 0.75;
     var beerUnit = 3;
 
-    var unitsFromSpirits = Math.ceil(spiritAmount / spiritUnit);
-    var unitsFromWine = Math.ceil(wineAmount / wineUnit);
-    var unitsFromBeer = Math.ceil(beerAmount / beerUnit);
+    var unitsFromSpirits = Math.ceil(amounts.spirits / spiritUnit) || 0;
+    var unitsFromWine = Math.ceil(amounts.wine / wineUnit) || 0;
+    var unitsFromBeer = Math.ceil(amounts.beer / beerUnit) || 0;
 
-    return unitsFromSpirits + unitsFromWine + unitsFromBeer;
+    return {
+        spirits: unitsFromSpirits,
+        wine: unitsFromWine,
+        beer: unitsFromBeer
+    }
 
 }
 
-function calculateRemaining(numPeople, units) {
-    /*
-     Calculates the number of tax-free units a group has remaining.
-
-     numPeople: the number of people travelling together
-     units: the combined number of units of alcohol the group is carrying
-     */
-
+function calculateAvailable(numPeople) {
     // Limit defined by https://www.tollur.is/einstaklingar/tollamal/ferdamenn/
     var unitsPerPerson = 6;
-    return numPeople * unitsPerPerson - units;
+    return numPeople * unitsPerPerson;
+}
+
+function calculateRemaining(totalUnits, units) {
+    return totalUnits - units.beer - units.wine - units.spirits;
 }
 
 
-function updateMessages(remainder) {
+function gatherAmounts() {
+    return {
+        spirits: parseFloat($("#spirit-amount").val()),
+        wine: parseFloat($("#wine-amount").val()),
+        beer: parseFloat($("#beer-amount").val())
+    }
+}
+
+function getGroupSize() {
+    return parseInt($("#num-people").val());
 }
 
 function applyListeners() {
     $("form").change(function () {
+        // Gather form data
+        var litreAmounts = gatherAmounts();
+        var numPeople = getGroupSize();
 
-        var numPeople = parseInt($("#num-people").val());
-        var spirits = parseFloat($("#spirit-amount").val());
-        var wine = parseFloat($("#wine-amount").val());
-        var beer = parseFloat($("#beer-amount").val());
+        // Perform calculations
+        var units = litresToUnits(litreAmounts);
+        var unitsAvailable = calculateAvailable(numPeople);
+        var unitsRemaining = calculateRemaining(unitsAvailable, units);
 
-        var units = litresToUnits(spirits, wine, beer);
-        var remaining = calculateRemaining(numPeople, units);
-        updateMessages(remaining);
+        // Display results
+        updateMessages(units, unitsAvailable, unitsRemaining);
     })
 }
 
