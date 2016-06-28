@@ -1,6 +1,9 @@
 "use strict";
 
 function updateMessages(units, unitsAvailable, unitsRemaining) {
+    /*
+     Interfaces with the HTML (see index.html) to display the calculated info.
+     */
     for (var prop in units) {
         if (units.hasOwnProperty(prop)) {
             $("." + prop + "-units").text(units[prop]);
@@ -22,6 +25,8 @@ function updateMessages(units, unitsAvailable, unitsRemaining) {
 function litresToUnits(amounts) {
     /*
      Converts given amounts of alcohol to "units" defined by Icelandic customs.
+     Returns a JS object, with the number of units for each type of alcohol as
+     properties.
      */
 
     // Units defined by https://www.tollur.is/einstaklingar/tollamal/ferdamenn/
@@ -42,7 +47,10 @@ function litresToUnits(amounts) {
 }
 
 function calculateAvailable(numPeople) {
-    // Limit defined by https://www.tollur.is/einstaklingar/tollamal/ferdamenn/
+    /*
+     Calculates the total number of units of alcohol available to a group.
+     Limit defined by https://www.tollur.is/einstaklingar/tollamal/ferdamenn/
+     */
     var unitsPerPerson = 6;
     return numPeople * unitsPerPerson;
 }
@@ -53,6 +61,10 @@ function calculateRemaining(totalUnits, units) {
 
 
 function gatherAmounts() {
+    /*
+     Uses jQuery to gather form data on the number of litres of each alcohol.
+     Returns the data as a JS object.
+     */
     return {
         spirits: parseFloat($("#spirit-amount").val()),
         wine: parseFloat($("#wine-amount").val()),
@@ -61,10 +73,17 @@ function gatherAmounts() {
 }
 
 function getGroupSize() {
+    /*
+     Uses jQuery to gather form data on the number of people in the group.
+     Returns the data as an integer.
+     */
     return parseInt($("#num-people").val());
 }
 
 function applyListeners() {
+    /*
+     The "application", such as it is, is mostly driven by this single listener.
+     */
     $("form").change(function () {
         // Gather form data
         var litreAmounts = gatherAmounts();
