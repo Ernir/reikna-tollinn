@@ -77,7 +77,7 @@ function getGroupSize() {
      Uses jQuery to gather form data on the number of people in the group.
      Returns the data as an integer.
      */
-    return parseInt($("#num-people").val());
+    return parseInt($("#num-people").val()) || 0;
 }
 
 function applyListeners() {
