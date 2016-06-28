@@ -27,15 +27,17 @@
 
     <div class="jumbotron">
         <h1>Reiknaðu tollinn!</h1>
-        <p class="lead">
+        <p class="lead hidden-sm hidden-xs">
             Ekki láta taka þig.
         </p>
     </div>
     <div class="main">
-        <div class="row">
-            <form>
-                <div class="form-group col-md-4">
-                    <label>Fjöldi fólks:</label>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="num-people">
+                    Fjöldi fólks:
+                </label>
+                <div class="col-sm-4">
                     <input type="number"
                            id="num-people"
                            class="form-control"
@@ -43,34 +45,61 @@
                            min="0"
                     >
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Lítrar af sterku ( 22% til 55% ) :</label>
-                    <input type="number"
-                           id="beer-amount"
-                           class="form-control"
-                           value="0"
-                           min="0"
-                    >
+                <div class="col-sm-5">
+                    <span>6</span> einingar til ráðstöfunar.
                 </div>
-                <div class="form-group col-md-4">
-                    <label>Lítrar af léttvíni ( undir 22% ) :</label>
-                    <input type="number"
-                           id="wine-amount"
-                           class="form-control"
-                           value="0"
-                           min="0"
-                    >
-                </div>
-                <div class="form-group col-md-4">
-                    <label>Lítrar af bjór:</label>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="spirit-amount">
+                    Sterkt ( 22% til 55% ):
+                </label>
+                <div class="col-sm-4">
                     <input type="number"
                            id="spirit-amount"
                            class="form-control"
-                           value="0"
                            min="0"
+                           placeholder="lítrar"
                     >
                 </div>
-            </form>
+                <div class="col-sm-5">
+                    <span>0</span> einingar af sterku áfengi.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="wine-amount">
+                    Léttvín ( undir 22% ):
+                </label>
+                <div class="col-sm-4">
+                    <input type="number"
+                           id="wine-amount"
+                           class="form-control"
+                           min="0"
+                           placeholder="lítrar"
+                    >
+                </div>
+                <div class="col-sm-5">
+                    <span>0</span> einingar af léttvíni.
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-3" for="beer-amount">
+                    Bjór:
+                </label>
+                <div class="col-sm-4">
+                    <input type="number"
+                           id="beer-amount"
+                           class="form-control"
+                           min="0"
+                           placeholder="lítrar"
+                    >
+                </div>
+                <div class="col-sm-5">
+                    <span>0</span> einingar af bjór.
+                </div>
+            </div>
+        </form>
+        <div class="alert alert-success text-center" role="alert">
+            <span>6</span> einingar af <span>6</span> eru eftir.
         </div>
     </div>
 
